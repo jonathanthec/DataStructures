@@ -4,7 +4,7 @@ package LinkedList;
  * @author Jonathan Chen
  *
  * Created in February, 2020
- * Created to mimic the function of a linkedlist datastructure
+ * Created to mimic the functionality of a linkedlist datastructure
  *
  * A linked list is a list of nodes, each consisting a data, and two nodes pointing toward the nodes
  * before and after the node
@@ -20,6 +20,9 @@ public class MyLinkedList<E> extends AbstractList<E> {
     private Node head;
     private Node tail;
 
+    /**
+     * This class defines the Node class
+     */
     protected class Node {
         E data;
         Node next;
@@ -103,9 +106,76 @@ public class MyLinkedList<E> extends AbstractList<E> {
         }
     }
 
+    // Is last move an add or remove operation?
     private boolean addremoved = false;
 
-    protected class MyIterator implements ListIterator<E> {
+    /**
+     * This class defines MyListIterator class
+     */
+    protected class MyListIterator implements ListIterator<E> {
+        private boolean forward = false;
+        private boolean canRemove = false;
+        private Node left, right; // Cursor sits between these two nodes
+        private int idx = 0; // Tracks current position, what next() should return
+
+        public MyListIterator() {
+            left = head;
+            right = head.getNext();
+        }
+
+        /** Checks if there are elements in the forward direction */
+        @Override
+        public boolean hasNext() {
+            // An empty list has no next
+            if (nelems == 0) return false;
+            // Checks in case right is null and is not at end of list
+            else if (right.getElement() == null && idx < nelems) return true;
+            else if (right.getElement() != null) return true;
+            else return false;
+        }
+
+        @Override
+        public int nextIndex() {
+            if (idx == nelems) {
+                return nelems;
+            }
+            return idx++;
+        }
+
+        /** Returns the next element in the list and advances cursor */
+        @Override
+        public E next() throws NoSuchElementException {
+            if (!this.hasNext()) throw new NoSuchElementException();
+            Node toReturn = right;
+            left = right;
+            right = right.getNext();
+            idx++;
+            canRemove = true;
+            forward = true;
+            addremoved = false;
+            return toReturn.getElement();
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            if (nelems == 0) return false;
+            else if (left.getElement() == null && idx > 0) return true;
+            else if (left.getElement() != null) return true;
+            else return false;
+        }
+
+        @Override
+        public int previousIndex() {
+            if (idx == 0) {
+                return -1;
+            }
+            return idx--;
+        }
+
+        @Override
+        public E previous() throws NoSuchElementException {
+
+        }
 
     }
 }
