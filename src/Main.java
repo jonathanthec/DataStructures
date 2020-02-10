@@ -1,6 +1,12 @@
-public class Main {
+import LinkedList.*;
+import java.util.*;
 
-    public static void main(String[] args) {
-        System.out.println("Hello Github!");
+public class Main {
+    public static void main (String[] args) {
+        MyLinkedList<Integer> empty = new MyLinkedList<Integer>();
+        System.out.println(empty.size());
+        ListIterator<Integer> iterator;
+        iterator = empty.listIterator();
+        System.out.println(iterator.hasNext());
     }
 }
