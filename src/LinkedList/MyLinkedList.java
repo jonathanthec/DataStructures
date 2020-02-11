@@ -3,7 +3,7 @@ package LinkedList;
 /**
  * @author Jonathan Chen
  *
- * Created in February, 2020
+ * Created in February, 2020 with basic code from UCSD's Prof. Alvarado
  * Created to mimic the functionality of a linkedlist datastructure
  *
  * A linked list is a list of nodes, each consisting a data, and two nodes pointing toward the nodes
