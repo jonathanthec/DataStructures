@@ -8,7 +8,7 @@ public class MazeSolverTester {
     @Test
     public void test_bfs_maze1() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-1.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-1.txt");
         MazeSolver queue_solver = new MazeSolver(maze, new QueueWorklist());
         queue_solver.solve();
         assertEquals(queue_solver.getPath(), "Found the Escape!" +
@@ -20,7 +20,7 @@ public class MazeSolverTester {
     @Test
     public void test_dfs_maze1() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-1.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-1.txt");
         MazeSolver stack_solver = new MazeSolver(maze, new StackWorklist());
         stack_solver.solve();
         assertEquals(stack_solver.getPath(), "Found the Escape!\n" +
@@ -32,7 +32,7 @@ public class MazeSolverTester {
     @Test
     public void test_bfs_maze2() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-2.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-2.txt");
         MazeSolver queue_solver = new MazeSolver(maze, new QueueWorklist());
         queue_solver.solve();
         assertEquals(queue_solver.getPath(), "Found the Escape!" +
@@ -44,7 +44,7 @@ public class MazeSolverTester {
     @Test
     public void test_dfs_maze2() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-2.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-2.txt");
         MazeSolver stack_solver = new MazeSolver(maze, new StackWorklist());
         stack_solver.solve();
         assertEquals(stack_solver.getPath(), "Found the Escape!" +
@@ -56,7 +56,7 @@ public class MazeSolverTester {
     @Test
     public void test_bfs_maze3() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-3.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-3.txt");
         MazeSolver queue_solver = new MazeSolver(maze, new QueueWorklist());
         queue_solver.solve();
         assertEquals(queue_solver.getPath(), "Found the Escape!" +
@@ -79,7 +79,7 @@ public class MazeSolverTester {
     @Test
     public void test_dfs_maze3() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-3.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-3.txt");
         MazeSolver stack_solver = new MazeSolver(maze, new StackWorklist());
         stack_solver.solve();
         assertEquals(stack_solver.getPath(), "Found the Escape!" +
@@ -102,7 +102,7 @@ public class MazeSolverTester {
     @Test
     public void test_bfs_maze4() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-4.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-4.txt");
         MazeSolver queue_solver = new MazeSolver(maze, new QueueWorklist());
         queue_solver.solve();
         assertEquals(queue_solver.getPath(), "Found the Escape!" +
@@ -125,7 +125,7 @@ public class MazeSolverTester {
     @Test
     public void test_dfs_maze4() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-4.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-4.txt");
         MazeSolver stack_solver = new MazeSolver(maze, new StackWorklist());
         stack_solver.solve();
         assertEquals(stack_solver.getPath(), "Found the Escape!" +
@@ -148,7 +148,7 @@ public class MazeSolverTester {
     @Test
     public void test_bfs_maze5() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-5.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-5.txt");
         MazeSolver queue_solver = new MazeSolver(maze, new QueueWorklist());
         queue_solver.solve();
         assertEquals(queue_solver.getPath(), "Uh Oh!! There's no escape!!");
@@ -159,7 +159,7 @@ public class MazeSolverTester {
     @Test
     public void test_dfs_maze5() {
         Maze maze = new Maze();
-        maze.loadMaze("Mazes/maze-5.txt");
+        maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-5.txt");
         MazeSolver stack_solver = new MazeSolver(maze, new StackWorklist());
         stack_solver.solve();
         assertEquals(stack_solver.getPath(), "Uh Oh!! There's no escape!!");

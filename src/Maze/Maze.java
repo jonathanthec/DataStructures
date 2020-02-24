@@ -167,5 +167,15 @@ public class Maze {
         return s;
     }
 
+    public static void main (String[] args) {
+        System.out.println("Big Donkey Gordon!");
+        for (int i=1; i<6; i++) {
+            Maze maze = new Maze();
+            maze.loadMaze("/Users/jonathan/IdeaProjects/DataStructures/src/Maze/Mazes/maze-"+i+".txt");
+            String s = maze.toString();
+            System.out.println(s);
+        }
+    }
+
 }
 
