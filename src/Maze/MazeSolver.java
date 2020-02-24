@@ -7,8 +7,10 @@ public class MazeSolver {
 
     // The worklist to hold the search as it proceeds.
     private SearchWorklist worklist;
+
     // The Maze to solve.
     private Maze maze = new Maze();
+
     // The path to the exit, if any
     private String path="Found the Escape!";
 
@@ -81,9 +83,19 @@ public class MazeSolver {
      * foundExit variable appropriately.
      */
     public void solve() {
-        // TODO
-        // This function should use next.  You should also create and use any
-        // other helper fuctions you find helpful here.
+        Square start = maze.getStart();
+        Square next;
+        worklist.add(start);
+        while (!worklist.isEmpty() && !foundExit) {
+            next = this.step();
+            if (next.isEnd()) {
+                foundExit = true;
+            }
+        }
+        gameOver = true;
+        if (foundExit) {
+            this.setPath(maze.getFinish());
+        }
 
     }
 
@@ -92,15 +104,35 @@ public class MazeSolver {
      * @return The next Square that has just been visited.
      */
     public Square step() {
-        // TODO
-        return null; //CHANGE-XXX
+        Square curr = worklist.getNext();
+        curr.setVisited();
+        ArrayList<Square> neighbors = maze.getNeighbors(curr);
+        for (int i=0; i<neighbors.size(); i++) {
+            Square temp = neighbors.get(i);
+            if (temp.getPrevious()==null && !temp.isVisited()) {
+                worklist.add(temp);
+                temp.setPrevious(curr);
+            }
+        }
+        return curr;
+    }
 
+    private String printCoor(Square s) {
+        String toReturn = "[" + s.getRow() + "," + s.getCol() + "] ";
+        return toReturn;
     }
 
     // Set the squares in the path appropriately and set the path
     // from start to finish.
     public void setPath(Square finish) {
-        // TODO
+        path += "\nPath from start to finish: ";
+        String pathCoor = "";
+        while(!finish.isStart()) {
+            pathCoor = printCoor(finish) + pathCoor;
+            finish.setFinalPath();
+            finish = finish.getPrevious();
+        }
+        path = path + printCoor(finish) + pathCoor;
     }
 
     /**
