@@ -74,7 +74,14 @@ public class HashTable implements IHashTable {
      */
     @Override
     public boolean delete(String value) throws NullPointerException {
-
+        if (value == null) throw new NullPointerException();
+        if (contains(value)) {
+            int bucket = hashFunction(value, hashTable.length);
+            hashTable[bucket].remove(value);
+            nelems--;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -99,7 +106,22 @@ public class HashTable implements IHashTable {
 
     @Override
     public void printTable() {
-
+        String toReturn = "";
+        for (int i=0; i<hashTable.length; i++) {
+            toReturn += i + ": ";
+            if (hashTable[i] != null) {
+                for (int j = 0; j < hashTable[i].size(); j++) {
+                    if (hashTable[i].get(j) == null) break;
+                    if (hashTable[i].get(j) != null) {
+                        toReturn += j;
+                    }
+                    if (hashTable[i].get(j + 1) != null) {
+                        toReturn += ", ";
+                    }
+                }
+            }
+            System.out.println(toReturn);
+        }
     }
 
     /**
