@@ -42,7 +42,15 @@ public class HashTable implements IHashTable {
      */
     @Override
     public boolean insert(String value) throws NullPointerException {
-
+        if (value == null) throw new NullPointerException();
+        if (!contains(value)) {
+            int bucket = hashFunction(value, hashTable.length);
+            addNode(value, bucket, hashTable);
+            hashTable = rehash();
+            nelems++;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -77,7 +85,16 @@ public class HashTable implements IHashTable {
      */
     @Override
     public boolean contains(String value) throws NullPointerException {
-
+        if (value == null) throw new NullPointerException();
+        int bucket = hashFunction(value, hashTable.length);
+        if (hashTable[bucket] != null) {
+            for (int i=0; i<hashTable[bucket].size(); i++) {
+                if (hashTable[bucket].get(i).equals(value)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
@@ -91,7 +108,7 @@ public class HashTable implements IHashTable {
      */
     @Override
     public int getSize() {
-
+        return nelems;
     }
 
     private LinkedList<String>[] rehash() {
