@@ -86,7 +86,7 @@ public class HashTable implements IHashTable {
 
     /**
      * Check whether the HashTable contains a specific element
-     * @param value value to look up
+     * @param value value to look up in the hashtable
      * @return
      * @throws NullPointerException
      */
